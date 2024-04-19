@@ -12,28 +12,28 @@ public class Cities10k {
     }
     public Cities10k() {
     }
-    public static Object[] Calculations(Cities10k cityX, Cities10k cityY){
+    public static double Calculations(String nameX,double latitudeX, double longitudeX,String nameY, double latitudeY, double longitudeY){
         double result;
         // distance between latitudes and longitudes
-        double dLat = Math.toRadians(cityY.latitude - cityX.latitude);
-        double dLon = Math.toRadians(cityY.longitude - cityX.longitude);
+        double dLat = Math.toRadians(latitudeY- latitudeX);
+        double dLon = Math.toRadians(longitudeY - longitudeX);
 
         // convert to radians
-        cityX.latitude = Math.toRadians(cityX.latitude);
-        cityY.latitude = Math.toRadians(cityY.latitude);
+        latitudeX = Math.toRadians(latitudeX);
+        latitudeY = Math.toRadians(latitudeY);
 
         // apply formula
         double a = Math.pow(Math.sin(dLat / 2), 2) +
                 Math.pow(Math.sin(dLon / 2), 2) *
-                        Math.cos(cityX.latitude) *
-                        Math.cos(cityY.latitude);
+                        Math.cos(latitudeX) *
+                        Math.cos(latitudeY);
         double rad = 6371;
         double c = 2 * Math.asin(Math.sqrt(a));
         result= rad * c;
-        Object[] res = new Object[3];
-        res[0] = result;
-        res[1] = cityX.name;
-        res[2] = cityY.name;
-        return res;
+        return result;
     }
+//    public static class Result{
+//        public double distance;
+//        public String nameA, nameB;
+//    }
 }
